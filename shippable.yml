@@ -27,5 +27,7 @@ script:
   - vendor/bin/phpcs --standard=PSR2 src/ tests/Zoop/
   - vendor/bin/phpmd src/ text ruleset.xml
   
+archive: true
+
 notifications:
    email: false
