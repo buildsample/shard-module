@@ -19,13 +19,13 @@ before_script:
   - echo "extension=mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - echo "xdebug.max_nesting_level = 1000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer self-update
-  - composer install
-  
+  - composer update --prefer-source --dev --no-interaction
+
 script:
-  - phpunit --log-junit shippable/testresults/junit.xml --coverage-clover shippable/codecoverage/clover.xml tests/
-  - php build/coverage-checker.php shippable/codecoverage/clover.xml 79
-  - vendor/bin/phpcs --standard=PSR2 src/ tests/Zoop/
-  - vendor/bin/phpmd src/ text ruleset.xml
+  - vendor/bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage tests/Zoop/
+  #- php build/coverage-checker.php shippable/codecoverage/clover.xml 79
+  #- vendor/bin/phpcs --standard=PSR2 src/ tests/Zoop/
+  #- vendor/bin/phpmd src/ text ruleset.xml
   
 archive: true
 
