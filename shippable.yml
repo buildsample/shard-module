@@ -19,8 +19,7 @@ before_script:
   - echo "extension=mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - echo "xdebug.max_nesting_level = 1000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer self-update
-  - composer update --prefer-source --dev --no-interaction
-
+  - composer update --prefer-source --no-interaction --dev
 script:
   - vendor/bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage tests/Zoop/
   #- php build/coverage-checker.php shippable/codecoverage/clover.xml 79
