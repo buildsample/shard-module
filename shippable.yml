@@ -23,8 +23,9 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
    
 script:
-  - vendor/bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage tests/performance/
-  #- php build/coverage-checker.php shippable/codecoverage/clover.xml 79
+  - vendor/bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage tests/
+  - vendor/bin/phpunit tests/
+   #- php build/coverage-checker.php shippable/codecoverage/clover.xml 79
   #- vendor/bin/phpcs --standard=PSR2 src/ tests/Zoop/
   #- vendor/bin/phpmd src/ text ruleset.xml
   
